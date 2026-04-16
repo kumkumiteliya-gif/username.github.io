@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FilmyzBhabhi.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--y:#FFD700;--yd:#FFA500;--yl:#FFF3B0;--dk:#1a1000;--dk2:#2a1f00;--bg:#FFFBEA;--cb:#FFF8DC;--br:#e6c200;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans Devanagari',sans-serif;background:var(--bg);color:var(--dk);}
+/* LOGIN */
+#lp{position:fixed;inset:0;background:#0a0800;z-index:9999;display:flex;align-items:center;justify-content:center;}
+.lb{background:var(--cb);border-radius:16px;padding:28px 22px;max-width:380px;width:92%;box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.ll{text-align:center;font-size:22px;font-weight:900;margin-bottom:4px;}
+.ls{text-align:center;font-size:11px;color:#7a5500;margin-bottom:14px;}
+.aw{background:#fff3cd;border:1px solid var(--br);border-radius:8px;padding:10px;margin-bottom:14px;font-size:11px;color:#7a4f00;text-align:center;}
+.lb input{width:100%;padding:10px 14px;margin-bottom:10px;border:1.5px solid var(--br);border-radius:8px;font-family:inherit;font-size:14px;background:#fffde8;outline:none;}
+.pc{display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;font-size:11px;color:#5a3d00;line-height:1.5;}
+.pc input{margin-top:2px;flex-shrink:0;accent-color:var(--yd);}
+.pc a{color:var(--yd);text-decoration:underline;cursor:pointer;}
+.lbtn{width:100%;padding:12px;background:var(--yd);color:var(--dk);border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+.lbtn:hover{background:var(--y);}
+.lt{text-align:center;margin-top:10px;font-size:12px;color:#5a3d00;}
+.lt span{color:var(--yd);cursor:pointer;font-weight:700;}
+/* HEADER */
+header{background:var(--y);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.ht{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+.hbtn{font-size:24px;cursor:pointer;color:var(--dk);background:none;border:none;}
+.st{font-size:20px;font-weight:900;color:var(--dk);text-decoration:none;}
+.sb{display:none;padding:8px 16px;background:var(--yd);gap:8px;}
+.sb.act{display:flex;}
+.sb input{flex:1;padding:8px 12px;border-radius:20px;border:none;font-size:14px;font-family:inherit;outline:none;}
+.sb button{background:var(--dk);color:var(--y);border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;font-weight:600;}
+/* CATS */
+.catbox{background:var(--dk2);margin:12px;border-radius:10px;padding:12px;}
+.catbox h3{color:var(--y);font-size:13px;text-align:center;margin-bottom:10px;}
+.ct{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.tag{background:var(--yd);color:var(--dk);padding:4px 10px;border-radius:15px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all .2s;}
+.tag:hover,.tag.act{background:var(--y);transform:scale(1.05);}
+/* CARDS */
+.sl{padding:8px 12px;display:flex;flex-direction:column;gap:10px;}
+.sc{background:var(--cb);border:1px solid var(--br);border-radius:10px;padding:14px 12px;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+.sc:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,165,0,.3);}
+.sc h2{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:8px;}
+.sm{display:flex;align-items:center;justify-content:space-between;}
+.si{display:flex;gap:10px;font-size:11px;color:#7a5500;}
+.rb{background:var(--yd);color:var(--dk);border:none;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.rb:hover{background:var(--y);}
+.lmb{display:block;margin:16px auto;padding:12px 32px;background:var(--yd);color:var(--dk);border:none;border-radius:25px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:200;overflow-y:auto;}
+.mo.act{display:block;}
+.mc{background:var(--bg);margin:0 auto;max-width:700px;min-height:100vh;padding:16px 16px 120px;position:relative;}
+.mcl{position:sticky;top:8px;float:right;font-size:26px;cursor:pointer;background:var(--y);border:none;color:var(--dk);font-weight:700;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;z-index:10;}
+.mt{font-size:20px;font-weight:900;margin:8px 0 6px;line-height:1.3;clear:both;}
+.mm{font-size:12px;color:#7a5500;margin-bottom:14px;display:flex;gap:12px;flex-wrap:wrap;}
+.mb{font-size:15px;line-height:2;color:#2a1f00;font-family:'Noto Serif Devanagari',serif;white-space:pre-wrap;}
+/* TTS */
+.tts{background:var(--dk2);border-radius:10px;padding:12px;margin-bottom:14px;}
+.tts h4{color:var(--y);font-size:12px;margin-bottom:8px;font-weight:700;}
+.tc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;}
+.tb{background:var(--yd);color:var(--dk);border:none;padding:6px 12px;border-radius:16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+.tb:hover{background:var(--y);}
+.tb.asp{background:var(--y);outline:2px solid #fff;}
+.tb.vb{background:#3a2500;color:#fff;border:1px solid var(--yd);}
+.tb.vb.sel{background:var(--yd);color:var(--dk);}
+.tb.xbtn{background:#c0392b;color:#fff;}
+.tprog{width:100%;height:5px;background:#4a3000;border-radius:3px;cursor:pointer;appearance:none;}
+.tprog::-webkit-slider-thumb{appearance:none;width:14px;height:14px;background:var(--y);border-radius:50%;}
+.tmeta{display:flex;justify-content:space-between;font-size:10px;color:#aaa;margin-top:2px;}
+/* SIDE MENU */
+.smenu{position:fixed;top:0;left:-290px;width:290px;height:100vh;background:var(--dk2);z-index:400;transition:left .3s;overflow-y:auto;padding:20px 0;}
+.smenu.open{left:0;}
+.smh{padding:0 20px 16px;border-bottom:1px solid #4a3000;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
+.smt{font-size:18px;font-weight:900;color:var(--y);}
+.mc2{background:none;border:none;color:var(--y);font-size:22px;cursor:pointer;}
+.ui{padding:10px 20px;color:var(--y);font-size:13px;border-bottom:1px solid #4a3000;margin-bottom:8px;}
+.smenu ul{list-style:none;}
+.smenu ul li a{display:block;padding:11px 20px;color:#fff;text-decoration:none;font-size:14px;border-bottom:1px solid #3a2500;transition:background .2s;}
+.smenu ul li a:hover{background:#3a2500;color:var(--y);}
+.mo2{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:350;}
+.mo2.act{display:block;}
+/* SUBMIT */
+.ss{background:var(--yl);border:1px solid var(--br);border-radius:10px;margin:12px;padding:14px;text-align:center;}
+.ss h3{font-size:14px;margin-bottom:6px;}
+.ss p{font-size:12px;color:#7a5500;margin-bottom:10px;}
+.ssbtn{background:var(--yd);color:var(--dk);border:none;padding:9px 20px;border-radius:20px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px;}
+.smo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;overflow-y:auto;}
+.smo.act{display:block;}
+.sf{background:var(--bg);margin:40px auto;max-width:500px;border-radius:12px;padding:20px;position:relative;}
+.sf h2{font-size:18px;margin-bottom:14px;}
+.sf input,.sf textarea,.sf select{width:100%;padding:10px 12px;margin-bottom:10px;border:1px solid var(--br);border-radius:8px;font-family:inherit;font-size:13px;background:var(--cb);color:var(--dk);outline:none;}
+.sf textarea{min-height:130px;resize:vertical;}
+.sfb{background:var(--yd);color:var(--dk);border:none;padding:12px;border-radius:20px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;width:100%;}
+/* POLICY */
+.pmo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9998;overflow-y:auto;}
+.pmo.act{display:block;}
+.pc2{background:var(--bg);margin:30px auto;max-width:600px;border-radius:12px;padding:24px;position:relative;}
+.pc2 h2{margin-bottom:14px;}
+.pc2 p,.pc2 li{font-size:13px;color:#2a1f00;line-height:1.8;margin-bottom:8px;}
+.pc2 ul{padding-left:20px;}
+footer{background:var(--dk2);color:#ccc;text-align:center;padding:22px 16px;margin-top:20px;font-size:12px;line-height:1.8;}
+footer a{color:var(--y);text-decoration:none;margin:0 6px;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="lp">
+ <div class="lb">
+  <div class="ll">🔥 FilmyzBhabhi.com</div>
+  <div class="ls">Hindi Ki Sabse Hot Kahaniyan</div>
+  <div class="aw">⚠️ यह साइट केवल 18+ वयस्कों के लिए है।</div>
+  <div id="lf">
+   <input type="text" id="lu" placeholder="Username / Email" />
+   <input type="password" id="lpw" placeholder="Password" />
+   <div class="pc">
+    <input type="checkbox" id="pc1" />
+    <label for="pc1">मैं पुष्टि करता/करती हूँ कि मैं 18+ वर्ष का/की हूँ और <a onclick="openPol()">Privacy Policy</a>, <a onclick="openPol()">Terms of Service</a> से सहमत हूँ।</label>
+   </div>
+   <button class="lbtn" onclick="doLogin()">Login करें →</button>
+   <div class="lt">Account नहीं है? <span onclick="showReg()">Register करें</span></div>
+  </div>
+  <div id="rf" style="display:none">
+   <input type="text" id="ru" placeholder="Username *" />
+   <input type="email" id="re" placeholder="Email *" />
+   <input type="password" id="rp" placeholder="Password *" />
+   <input type="password" id="rp2" placeholder="Confirm Password *" />
+   <div class="pc">
+    <input type="checkbox" id="pc2" />
+    <label for="pc2">मैं पुष्टि करता/करती हूँ कि मैं 18+ वर्ष का/की हूँ और <a onclick="openPol()">Privacy Policy</a>, <a onclick="openPol()">Terms of Service</a> से सहमत हूँ।</label>
+   </div>
+   <button class="lbtn" onclick="doReg()">Register करें →</button>
+   <div class="lt">पहले से Account है? <span onclick="showLog()">Login करें</span></div>
+  </div>
+ </div>
+</div>
+
+<!-- POLICY MODAL -->
+<div class="pmo" id="pmo">
+ <div class="pc2">
+  <button onclick="closePol()" style="float:right;background:none;border:none;font-size:22px;cursor:pointer;">✕</button>
+  <h2>📜 Privacy Policy & Terms</h2>
+  <p><strong>1. आयु सीमा:</strong> यह वेबसाइट केवल 18+ वयस्कों के लिए है।</p>
+  <p><strong>2. सामग्री नीति:</strong> सभी कहानियाँ काल्पनिक हैं।</p>
+  <p><strong>3. उपयोग की शर्तें:</strong></p>
+  <ul><li>सामग्री कॉपी या शेयर करना मना है।</li><li>व्यावसायिक उपयोग वर्जित है।</li><li>आपत्तिजनक सामग्री रिपोर्ट करें।</li></ul>
+  <p><strong>4. गोपनीयता:</strong> आपकी जानकारी साझा नहीं होती।</p>
+  <p><strong>5. कानूनी:</strong> स्थानीय कानूनों का पालन आपकी जिम्मेदारी है।</p>
+  <br><button class="lbtn" onclick="closePol()">समझ गया ✓</button>
+ </div>
+</div>
+
+<!-- SIDE MENU -->
+<div class="mo2" id="mo2" onclick="closeMenu()"></div>
+<nav class="smenu" id="smenu">
+ <div class="smh">
+  <div class="smt">🔥 FilmyzBhabhi</div>
+  <button class="mc2" onclick="closeMenu()">✕</button>
+ </div>
+ <div class="ui" id="sui">👤 Guest</div>
+ <ul>
+  <li><a href="#" onclick="filt('all',null);closeMenu()">🏠 होम</a></li>
+  <li><a href="#" onclick="filt('भाभी',null);closeMenu()">💃 भाभी</a></li>
+  <li><a href="#" onclick="filt('आंटी',null);closeMenu()">👩 आंटी</a></li>
+  <li><a href="#" onclick="filt('मामी',null);closeMenu()">🌹 मामी</a></li>
+  <li><a href="#" onclick="filt('पड़ोसन',null);closeMenu()">🏘️ पड़ोसन</a></li>
+  <li><a href="#" onclick="filt('Wife Swap',null);closeMenu()">💑 Wife Swap</a></li>
+  <li><a href="#" onclick="filt('भाई बहन',null);closeMenu()">👫 भाई बहन</a></li>
+  <li><a href="#" onclick="filt('कुंवारी',null);closeMenu()">🌸 कुंवारी</a></li>
+  <li><a href="#" onclick="filt('माँ बेटा',null);closeMenu()">🏠 माँ बेटा</a></li>
+  <li><a href="#" onclick="filt('टीचर',null);closeMenu()">📚 टीचर</a></li>
+  <li><a href="#" onclick="filt('जीजा-साली',null);closeMenu()">💑 जीजा-साली</a></li>
+  <li><a href="#" onclick="openSub();closeMenu()">✍️ कहानी भेजें</a></li>
+  <li><a href="#" onclick="openPol();closeMenu()">📜 Privacy Policy</a></li>
+  <li><a href="mailto:support@filmyzbhabhi.com">📧 Contact Us</a></li>
+  <li><a href="#" onclick="doLogout()">🚪 Logout</a></li>
+ </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+ <div class="ht">
+  <button class="hbtn" onclick="openMenu()">☰</button>
+  <a href="#" class="st">FilmyzBhabhi.com</a>
+  <button class="hbtn" onclick="togSearch()">🔍</button>
+ </div>
+ <div class="sb" id="sb">
+  <input type="text" id="si" placeholder="कहानी खोजें..." oninput="doSearch()" />
+  <button onclick="doSearch()">खोजें</button>
+ </div>
+</header>
+
+<!-- CATS -->
+<div class="catbox">
+ <h3>कैसी कहानिया पढ़ने का मूड है ?</h3>
+ <div class="ct" id="ct">
+  <button class="tag act" onclick="filt('all',this)">सभी</button>
+  <button class="tag" onclick="filt('Wife Swap',this)">Wife Swap</button>
+  <button class="tag" onclick="filt('अज़नबी से सेक्स',this)">अज़नबी से सेक्स</button>
+  <button class="tag" onclick="filt('अन्य कहानी',this)">अन्य कहानी</button>
+  <button class="tag" onclick="filt('आंटी',this)">आंटी</button>
+  <button class="tag" onclick="filt('ककोल्ड',this)">ककोल्ड</button>
+  <button class="tag" onclick="filt('कुंवारी',this)">कुंवारी</button>
+  <button class="tag" onclick="filt('गर्लफ्रेंड',this)">गर्लफ्रेंड</button>
+  <button class="tag" onclick="filt('गे स्टोरी',this)">गे स्टोरी</button>
+  <button class="tag" onclick="filt('ग्रुप सेक्स',this)">ग्रुप सेक्स</button>
+  <button class="tag" onclick="filt('जीजा-साली',this)">जीजा-साली</button>
+  <button class="tag" onclick="filt('टीचर',this)">टीचर</button>
+  <button class="tag" onclick="filt('दोस्त की बीबी',this)">दोस्त की बीबी</button>
+  <button class="tag" onclick="filt('पड़ोसन',this)">पड़ोसन</button>
+  <button class="tag" onclick="filt('पापा',this)">पापा</button>
+  <button class="tag" onclick="filt('बहु-ससुर',this)">बहु-ससुर</button>
+  <button class="tag" onclick="filt('बीबी',this)">बीबी</button>
+  <button class="tag" onclick="filt('बॉस की वाइफ',this)">बॉस की वाइफ</button>
+  <button class="tag" onclick="filt('भतीजी',this)">भतीजी</button>
+  <button class="tag" onclick="filt('भाई बहन',this)">भाई बहन</button>
+  <button class="tag" onclick="filt('भाभी',this)">भाभी</button>
+  <button class="tag" onclick="filt('माँ बेटा',this)">माँ बेटा</button>
+  <button class="tag" onclick="filt('मामी',this)">मामी</button>
+  <button class="tag" onclick="filt('रिश्तो में सेक्स',this)">रिश्तो में सेक्स</button>
+  <button class="tag" onclick="filt('लेस्बियन',this)">लेस्बियन</button>
+ </div>
+</div>
+
+<div style="text-align:center;padding:6px;font-size:12px;color:#7a5500;" id="sc2"></div>
+
+<div class="ss">
+ <h3>✍️ अपनी कहानी भेजें</h3>
+ <p>आपकी असली या काल्पनिक कहानी यहाँ पब्लिश हो सकती है!</p>
+ <button class="ssbtn" onclick="openSub()">कहानी लिखकर भेजें →</button>
+</div>
+
+<div class="sl" id="sl"></div>
+<button class="lmb" id="lmb" onclick="loadMore()">और कहानियाँ लोड करें ↓</button>
+
+<footer>
+ <a href="#" onclick="openPol()">About</a> / <a href="#">Advertise</a> / <a href="#" onclick="openPol()">Privacy Policy</a> / <a href="mailto:support@filmyzbhabhi.com">Contact</a><br><br>
+ Email: <a href="mailto:support@filmyzbhabhi.com">support@filmyzbhabhi.com</a><br><br>
+ © 2024-2026 FilmyzBhabhi.com. All Rights Reserved.<br>
+ <small>सभी कहानियाँ काल्पनिक हैं। केवल 18+।</small>
+</footer>
+
+<!-- STORY MODAL -->
+<div class="mo" id="stmo">
+ <div class="mc">
+  <button class="mcl" onclick="closeStmo()">✕</button>
+  <h1 class="mt" id="mt"></h1>
+  <div class="mm" id="mm"></div>
+  <div class="tts">
+   <h4>🎧 कहानी सुनें – Text to Speech</h4>
+   <div class="tc">
+    <button class="tb" id="ppb" onclick="togPlay()">▶ Play</button>
+    <button class="tb" onclick="stopT()">⏹ Stop</button>
+    <button class="tb vb sel" id="mvb" onclick="setV('male')">👨 Male</button>
+    <button class="tb vb" id="fvb" onclick="setV('female')">👩 Female</button>
+    <button class="tb" id="s2x" onclick="setSpd(2)">2x</button>
+    <button class="tb" id="s5x" onclick="setSpd(5)">5x</button>
+    <button class="tb xbtn" onclick="stopT()">✕ बंद करें</button>
+   </div>
+   <input type="range" class="tprog" id="tp" min="0" max="100" value="0" onchange="seekT(this.value)" />
+   <div class="tmeta">
+    <span id="tct">0:00</span>
+    <span id="tsl" style="color:var(--y);">Speed: 1x</span>
+    <span id="ttt">~</span>
+   </div>
+  </div>
+  <div class="mb" id="mb"></div>
+ </div>
+</div>
+
+<!-- SUBMIT MODAL -->
+<div class="smo" id="smo">
+ <div class="sf">
+  <button onclick="closeSub()" style="float:right;background:none;border:none;font-size:22px;cursor:pointer;">✕</button>
+  <h2>✍️ अपनी कहानी भेजें</h2>
+  <input type="text" placeholder="आपका नाम (वैकल्पिक)" id="an" />
+  <input type="text" placeholder="कहानी का शीर्षक *" id="sti" />
+  <select id="sca">
+   <option value="">-- श्रेणी चुनें --</option>
+   <option>भाभी</option><option>आंटी</option><option>मामी</option><option>पड़ोसन</option>
+   <option>Wife Swap</option><option>भाई बहन</option><option>कुंवारी</option><option>गर्लफ्रेंड</option>
+   <option>दोस्त की बीबी</option><option>टीचर</option><option>बहु-ससुर</option><option>माँ बेटा</option><option>अन्य कहानी</option>
+  </select>
+  <textarea placeholder="अपनी कहानी हिंदी में लिखें... *" id="sco"></textarea>
+  <button class="sfb" onclick="subStory()">कहानी भेजें 🚀</button>
+ </div>
+</div>
+
+<script>
+// ===== DATA =====
+const cats=['भाभी','आंटी','मामी','पड़ोसन','Wife Swap','भाई बहन','कुंवारी','माँ बेटा','टीचर','दोस्त की बीबी','बहु-ससुर','पापा','बीबी','ककोल्ड','ग्रुप सेक्स','जीजा-साली','भतीजी','लेस्बियन','गर्लफ्रेंड','बॉस की वाइफ','अज़नबी से सेक्स','रिश्तो में सेक्स','अन्य कहानी'];
+const nF=['सुनीता','रीना','प्रिया','नेहा','पूजा','सपना','काजल','मीना','शीला','लता','कविता','अनीता','ममता','सुषमा','रेखा','उषा','गीता','सुमन','पायल','दीपिका','रानी','साधना','मनीषा','कोमल','शिल्पा','सोनिया','पिंकी','रिया','मोनिका','तनु'];
+const nM=['राहुल','विकास','संजय','अमित','रोहित','प्रकाश','सुरेश','महेश','रमेश','अजय','विजay','राजेश','मोहन','श्याम','किशोर','नितेश','आकाश','ध्रुव','सागर','कार्तिक','यश','दीपक','मनोज','सोनू','राजू'];
+
+function mkStory(title,cat,f,m){
+const p1=`${title}\n\nदोस्तों, यह कहानी है ${m} और ${f} की। यह एक सच्ची और रोमांचक घटना है जो मेरे जीवन में घटी और मैं इसे आपके साथ शेयर करना चाहता हूँ।\n\nमेरा नाम ${m} है। मैं लखनऊ में रहता हूँ। मेरी उम्र 28 साल है और मैं एक प्राइवेट कंपनी में काम करता हूँ। ${f} जी हमारी ${cat} हैं। वो बहुत ही खूबसूरत और आकर्षक महिला हैं। उनकी उम्र करीब 35 साल है और वो हमेशा साफ-सुथरी और सुंदर दिखती हैं।\n\nयह बात उस दिन की है जब घर में कोई नहीं था। मौसम बहुत गर्म था और दोपहर की गर्मी से सब परेशान थे। मैं घर पर अकेला था और कुछ काम कर रहा था तभी दरवाजे की घंटी बजी।\n\nमैंने दरवाजा खोला तो सामने ${f} जी खड़ी थीं। उन्होंने एक हल्की सूती साड़ी पहनी हुई थी। उनके बाल खुले हुए थे और चेहरे पर हल्की मुस्कान थी। मैं उन्हें देखकर थोड़ा सकपका गया।`;
+
+const p2=`उन्होंने कहा, "${m}, क्या मैं अंदर आ सकती हूँ? बाहर बहुत गर्मी है।"\n\nमैंने कहा, "हाँ जी, आइए।" वो अंदर आईं और सोफे पर बैठ गईं। मैंने उनके लिए ठंडा पानी लाया और साथ में कुछ नाश्ता भी रखा।\n\n${f} जी ने पानी पिया और कहा, "बहुत गर्मी है आज। AC चलाओ न।" मैंने AC चला दिया। थोड़ी देर में कमरा ठंडा हो गया।\n\nहम दोनों बातें करने लगे। उन्होंने अपने दिन की बात बताई और मैंने भी अपनी। बातों में न जाने कब वक्त बीत गया पता ही नहीं चला।\n\n${f} जी बहुत मिलनसार और बातूनी हैं। उनके साथ बात करने में बहुत अच्छा लगता है। उनकी हँसी बहुत प्यारी है और उनकी आँखों में एक अलग ही चमक है।`;
+
+const p3=`इसके बाद जो हुआ वो मेरी जिंदगी का सबसे यादगार पल बन गया। ${f} जी ने मेरी तरफ देखा और मुस्कुराते हुए कहा, "${m}, तुम बहुत बदल गए हो। अब तुम काफी समझदार और मर्द हो गए हो।"\n\nमैं शर्मा गया। उन्होंने मेरा हाथ पकड़ा और मेरे पास आ गईं। उनकी खुशबू बहुत अच्छी थी। मेरा दिल तेज़ धड़कने लगा।\n\nउस दिन हम दोनों बहुत करीब आए। यह अनुभव मेरे जीवन का सबसे खास पल था। ${f} जी की आँखों में एक अलग ही चमक थी। उनका स्पर्श बहुत ही मीठा और कोमल था।\n\nहमने घंटों बात की। उन्होंने अपनी जिंदगी की कहानी बताई। मैंने भी अपने दिल की बात कही। हम दोनों के बीच एक गहरा रिश्ता बन गया जो शब्दों में बयान करना मुश्किल है।`;
+
+const p4=`उस शाम हम दोनों ने मिलकर चाय बनाई। ${f} जी बहुत अच्छी चाय बनाती हैं। उनके हाथ की चाय पीकर मन तृप्त हो गया। हम दोनों ने साथ बैठकर चाय की चुस्कियाँ लीं और बातें करते रहे।\n\nरात को जब ${f} जी जाने लगीं तो उन्होंने मुड़कर देखा और कहा, "आज बहुत अच्छा लगा ${m}। इतने साल बाद किसी के साथ इतना अच्छा वक्त गुजरा।"\n\nमैं उन्हें दरवाजे तक छोड़ने गया। वो चली गईं लेकिन उनकी यादें मेरे साथ रह गईं। उस रात मैं सो नहीं पाया। बस ${f} जी के बारे में सोचता रहा।\n\nइसके बाद हमारी मुलाकातें होती रहीं। धीरे-धीरे हमारा रिश्ता और गहरा होता गया। ${f} जी मेरी जिंदगी का एक अहम हिस्सा बन गईं।`;
+
+const p5=`एक दिन उन्होंने कहा, "${m}, मुझे नहीं पता था कि जिंदगी में इतनी खुशी भी मिल सकती है।" उनकी बात सुनकर मेरा दिल भर आया।\n\nहम दोनों के बीच जो रिश्ता बना वो बहुत खास था। यह रिश्ता सिर्फ शरीर का नहीं था, बल्कि दिलों का था। हम एक दूसरे को समझते थे, एक दूसरे की जरूरत को महसूस करते थे।\n\n${f} जी बहुत समझदार और दिल की साफ महिला हैं। उन्होंने हमेशा मुझे सही राह दिखाई। उनकी सलाह हमेशा काम आई। उनके बिना जिंदगी अधूरी लगती है।\n\nसमय बीतता गया और हमारी दोस्ती और मजबूत होती गई। हम दोनों ने मिलकर जिंदगी के कई उतार-चढ़ाव देखे। हर मुश्किल में हम एक दूसरे के साथ खड़े रहे।`;
+
+const p6=`एक बार मैं बहुत परेशान था। मेरी नौकरी में कुछ दिक्कत आ गई थी। ${f} जी ने मुझे समझाया और हिम्मत दी। उनकी वजह से मैं मुश्किल से बाहर निकल पाया।\n\nउन्होंने कहा, "${m}, जिंदगी में हार मत मानो। तुम बहुत काबिल हो। हर मुश्किल के बाद एक नई सुबह आती है।" उनके शब्दों ने मुझे नई ऊर्जा दी।\n\nमैं उनका बहुत शुक्रगुजार हूँ। उन्होंने मुझे जिंदगी में जीना सिखाया। उनकी वजह से मैं एक बेहतर इंसान बन पाया।\n\n${f} जी की यादें आज भी मेरे दिल में ताजा हैं। वो एक खास इंसान हैं जिन्होंने मेरी जिंदगी को बदल दिया। उनकी मुस्कान, उनकी आवाज, उनका स्पर्श — सब कुछ मुझे याद है।`;
+
+const p7=`इस कहानी को लिखते समय मेरे मन में ${f} जी की तस्वीर आ जाती है। उनकी मुस्कान मन को खुश कर देती है। उनकी बातें दिल को छू जाती हैं।\n\nदोस्तों, जिंदगी में ऐसे रिश्ते बहुत कम मिलते हैं। जब मिलें तो उन्हें संभालकर रखें। ऐसे रिश्ते ही जिंदगी को खूबसूरत बनाते हैं।\n\nमैं उम्मीद करता हूँ कि आपको भी जिंदगी में ऐसा कोई मिले जो आपकी जिंदगी को रोशन कर दे। जो आपके दुख में साथ दे और खुशी में और खुश कर दे।\n\n${f} जी, अगर आप यह पढ़ रही हैं तो जान लीजिए — आप मेरी जिंदगी की सबसे खास इंसान हैं। आपने मुझे जीना सिखाया। आपका शुक्रिया।\n\nयह मेरी कहानी थी। आशा है आपको पसंद आई होगी। अगर आपके पास भी कोई ऐसी कहानी है तो हमें भेजें।\n\nजय हिंद! 🇮🇳`;
+
+return [p1,p2,p3,p4,p5,p6,p7].join('\n\n');
+}
+
+const ttmpl=[
+(f,m,c)=>`${f} ${c} की रोमांचक रात`,
+(f,m,c)=>`${m} और ${f} ${c} का राज़`,
+(f,m,c)=>`${c} ${f} का मादक जादू`,
+(f,m,c)=>`${f} ${c} की बेकाबू इच्छा`,
+(f,m,c)=>`मेरी ${c} ${f} की सच्ची कहानी`,
+(f,m,c)=>`${f} ${c} के साथ अनोखा रोमांच`,
+(f,m,c)=>`गर्म रात और ${f} ${c}`,
+(f,m,c)=>`${m} की ${c} ${f} – एक यादगार शाम`,
+(f,m,c)=>`${f} ${c} की मीठी यादें`,
+(f,m,c)=>`${c} वाली ${f} का दिल जीता`,
+(f,m,c)=>`${f} ${c} के साथ बरसात की रात`,
+(f,m,c)=>`${c} ${f} ने बदल दी जिंदगी`,
+(f,m,c)=>`${m} का पहला अनुभव – ${f} ${c}`,
+(f,m,c)=>`${f} ${c} का रहस्यमय आकर्षण`,
+(f,m,c)=>`${c} ${f} के साथ दीवाली की रात`,
+(f,m,c)=>`${f} ${c} की मादक खुशबू`,
+(f,m,c)=>`${m} और ${f} ${c} – एक अनकहा रिश्ता`,
+(f,m,c)=>`${c} ${f} का बेमिसाल प्यार`,
+(f,m,c)=>`${f} ${c} के संग होली का रंग`,
+(f,m,c)=>`${c} ${f} की तड़पती आँखें`,
+(f,m,c)=>`${f} ${c} और ${m} की अनोखी शाम`,
+(f,m,c)=>`रात की तन्हाई में ${f} ${c}`,
+(f,m,c)=>`${f} ${c} का पहला प्यार`,
+(f,m,c)=>`मौसम बदला और ${f} ${c} के दिल की बात`,
+(f,m,c)=>`${c} ${f} की नज़रें और ${m} का दिल`,
+];
+
+const ms=['Jan','Feb','Mar','Apr','May','Jun'];
+function rd(){return `${ms[Math.floor(Math.random()*ms.length)]} ${Math.floor(Math.random()*28)+1}, 2026`;}
+function rp(a){return a[Math.floor(Math.random()*a.length)];}
+
+const stories=[];
+const fixed=[
+ {title:"मामी पर हक़ जमाने का रोमांचक सफर",cat:"मामी",date:"Apr 15, 2026"},
+ {title:"भोली पड़ोसिन के जन्मदिन का अनोखा रोमांच",cat:"कुंवारी",date:"Apr 14, 2026"},
+ {title:"पापा और प्रिया मामी का छुपा रोमांस",cat:"पापा",date:"Apr 13, 2026"},
+ {title:"लखनऊ वाली पड़ोसन मीना के साथ दीवाली की रात",cat:"पड़ोसन",date:"Apr 12, 2026"},
+ {title:"नाजायज़ सम्बन्ध – सोनिया चाची और राहुल",cat:"आंटी",date:"Apr 8, 2026"},
+ {title:"40 साल की नर्स राधा की देसी कहानी",cat:"अज़नबी से सेक्स",date:"Apr 7, 2026"},
+ {title:"बीवियों के साथ ग्रुप का मज़ा",cat:"Wife Swap",date:"Apr 3, 2026"},
+ {title:"रीना भाभी की मीठी याद",cat:"भाभी",date:"Apr 9, 2026"},
+ {title:"मौसी के साथ मस्त समय",cat:"मामी",date:"Jan 16, 2026"},
+ {title:"भाभी की मादक अदाएं",cat:"भाभी",date:"Apr 5, 2026"},
+ {title:"दोस्त की बीवी का राज़",cat:"दोस्त की बीबी",date:"Apr 6, 2026"},
+ {title:"साली के साथ होली का रंग",cat:"जीजा-साली",date:"Apr 10, 2026"},
+ {title:"बहन के साथ होली की रात",cat:"भाई बहन",date:"Apr 11, 2026"},
+ {title:"प्रिया दीदी का अनमोल रिटर्न सरप्राइज",cat:"भाई बहन",date:"Apr 13, 2026"},
+ {title:"गांव में नेहा के साथ सुहागरात की रात",cat:"कुंवारी",date:"Apr 13, 2026"},
+ {title:"माँ की ममता और मेरी जिंदगी",cat:"माँ बेटा",date:"Apr 13, 2026"},
+ {title:"ससुराल में तीन रातें",cat:"Wife Swap",date:"Apr 13, 2026"},
+ {title:"बड़ी बहन का प्यार",cat:"भाई बहन",date:"Apr 12, 2026"},
+ {title:"मोटी गांड वाली आंटी के साथ एक रात",cat:"आंटी",date:"Apr 7, 2026"},
+ {title:"पड़ोस की ब्यूटी पार्लर वाली की हॉट कहानी",cat:"पड़ोसन",date:"Apr 9, 2026"},
+];
+
+let sid=1;
+fixed.forEach(x=>{
+ const f=rp(nF),m=rp(nM);
+ stories.push({id:sid++,title:x.title,cat:x.cat,date:x.date,body:mkStory(x.title,x.cat,f,m)});
+});
+
+while(stories.length<520){
+ const cat=rp(cats);
+ const f=rp(nF),m=rp(nM);
+ const catS=cat.split(' ')[0];
+ const tmpl=rp(ttmpl);
+ const title=tmpl(f,m,catS);
+ stories.push({id:sid++,title,cat,date:rd(),body:mkStory(title,cat,f,m)});
+}
+
+// ===== STATE =====
+let curFilt='all',curSrch='',dispN=20;
+let tActive=false,tPaused=false,tVoice='male',tSpd=1,tText='',tStart=0;
+let tUtt=null;
+
+// ===== LOGIN =====
+function doLogin(){
+ const u=document.getElementById('lu').value.trim();
+ const p=document.getElementById('lpw').value.trim();
+ const c=document.getElementById('pc1').checked;
+ if(!u||!p){alert('Username और Password भरें।');return;}
+ if(!c){alert('कृपया Privacy Policy से सहमत हों।');return;}
+ document.getElementById('lp').style.display='none';
+ document.getElementById('sui').textContent='👤 '+u;
+}
+function doReg(){
+ const u=document.getElementById('ru').value.trim();
+ const e=document.getElementById('re').value.trim();
+ const p=document.getElementById('rp').value.trim();
+ const p2=document.getElementById('rp2').value.trim();
+ const c=document.getElementById('pc2').checked;
+ if(!u||!e||!p){alert('सभी फ़ील्ड भरें।');return;}
+ if(p!==p2){alert('Password match नहीं कर रहा।');return;}
+ if(!c){alert('कृपया Privacy Policy से सहमत हों।');return;}
+ document.getElementById('lp').style.display='none';
+ document.getElementById('sui').textContent='👤 '+u;
+}
+function doLogout(){document.getElementById('lp').style.display='flex';closeMenu();}
+function showReg(){document.getElementById('lf').style.display='none';document.getElementById('rf').style.display='block';}
+function showLog(){document.getElementById('rf').style.display='none';document.getElementById('lf').style.display='block';}
+
+// ===== RENDER =====
+function getList(){
+ let l=stories;
+ if(curFilt!=='all')l=l.filter(s=>s.cat===curFilt);
+ if(curSrch)l=l.filter(s=>s.title.toLowerCase().includes(curSrch)||s.cat.includes(curSrch));
+ return l;
+}
+function render(){
+ const l=getList();
+ document.getElementById('sc2').textContent=`कुल ${l.length} कहानियाँ उपलब्ध`;
+ const show=l.slice(0,dispN);
+ const c=document.getElementById('sl');
+ if(!show.length){c.innerHTML='<p style="text-align:center;padding:30px;color:#7a5500;">कोई कहानी नहीं मिली</p>';document.getElementById('lmb').style.display='none';return;}
+ c.innerHTML=show.map(s=>`<div class="sc" onclick="openS(${s.id})">
+  <h2>${s.title}</h2>
+  <div class="sm"><div class="si"><span>${s.cat}</span><span>${s.date}</span></div>
+  <button class="rb" onclick="event.stopPropagation();openS(${s.id})">Read Story →</button></div>
+ </div>`).join('');
+ document.getElementById('lmb').style.display=dispN>=l.length?'none':'block';
+}
+function filt(cat,btn){
+ curFilt=cat;dispN=20;
+ document.querySelectorAll('.tag').forEach(t=>t.classList.remove('act'));
+ if(btn)btn.classList.add('act');
+ render();window.scrollTo(0,0);
+}
+function doSearch(){curSrch=document.getElementById('si').value.toLowerCase();dispN=20;render();}
+function loadMore(){dispN+=20;render();}
+
+// ===== STORY MODAL =====
+function openS(id){
+ const s=stories.find(x=>x.id===id);if(!s)return;
+ stopT();
+ document.getElementById('mt').textContent=s.title;
+ document.getElementById('mm').innerHTML=`<span>📁 ${s.cat}</span><span>📅 ${s.date}</span><span>⏱ ~15 min read</span>`;
+ document.getElementById('mb').textContent=s.body;
+ document.getElementById('stmo').classList.add('act');
+ document.body.style.overflow='hidden';
+ document.getElementById('tp').value=0;
+ document.getElementById('tct').textContent='0:00';
+ document.getElementById('ppb').textContent='▶ Play';
+ tText=s.title+'। '+s.body;
+}
+function closeStmo(){stopT();document.getElementById('stmo').classList.remove('act');document.body.style.overflow='';}
+
+// ===== TTS =====
+function getVoice(g){
+ const vs=window.speechSynthesis.getVoices();
+ let hi=vs.filter(v=>v.lang==='hi-IN'||v.lang.startsWith('hi'));
+ if(!hi.length)hi=vs.filter(v=>v.lang.startsWith('en'));
+ if(!hi.length)hi=vs;
+ if(!hi.length)return null;
+ if(g==='female'){
+  const fv=hi.filter(v=>/female|woman|girl/i.test(v.name));
+  return fv.length?fv[0]:hi[hi.length-1];
+ }
+ return hi[0];
+}
+function togPlay(){
+ if(tActive&&!tPaused){window.speechSynthesis.pause();tPaused=true;document.getElementById('ppb').textContent='▶ Play';}
+ else if(tActive&&tPaused){window.speechSynthesis.resume();tPaused=false;document.getElementById('ppb').textContent='⏸ Pause';}
+ else startT();
+}
+function startT(){
+ window.speechSynthesis.cancel();
+ if(!tText)return;
+ tActive=true;tPaused=false;
+ document.getElementById('ppb').textContent='⏸ Pause';
+ tUtt=new SpeechSynthesisUtterance(tText);
+ tUtt.lang='hi-IN';tUtt.rate=tSpd;
+ const sv=()=>{const v=getVoice(tVoice);if(v)tUtt.voice=v;};
+ if(window.speechSynthesis.getVoices().length)sv();
+ else window.speechSynthesis.onvoiceschanged=sv;
+ tStart=Date.now();
+ tUtt.onboundary=e=>{
+  if(e.name==='word'){
+   const prog=Math.min((e.charIndex/tText.length)*100,100);
+   document.getElementById('tp').value=prog;
+   const el=Math.floor((Date.now()-tStart)/1000);
+   document.getElementById('tct').textContent=`${Math.floor(el/60)}:${(el%60<10?'0':'')+(el%60)}`;
+   const tot=Math.floor(tText.length/(tSpd*15));
+   document.getElementById('ttt').textContent=`~${Math.floor(tot/60)}:${(tot%60<10?'0':'')+(tot%60)} total`;
+  }
+ };
+ tUtt.onend=()=>{tActive=false;document.getElementById('ppb').textContent='▶ Play';document.getElementById('tp').value=100;};
+ tUtt.onerror=()=>{tActive=false;document.getElementById('ppb').textContent='▶ Play';};
+ window.speechSynthesis.speak(tUtt);
+}
+function stopT(){
+ window.speechSynthesis.cancel();tActive=false;tPaused=false;
+ const pb=document.getElementById('ppb');if(pb)pb.textContent='▶ Play';
+ const tp=document.getElementById('tp');if(tp)tp.value=0;
+}
+function setV(g){
+ tVoice=g;
+ document.getElementById('mvb').classList.toggle('sel',g==='male');
+ document.getElementById('fvb').classList.toggle('sel',g==='female');
+ if(tActive){stopT();startT();}
+}
+function setSpd(s){
+ tSpd=s;
+ document.getElementById('s2x').classList.toggle('asp',s===2);
+ document.getElementById('s5x').classList.toggle('asp',s===5);
+ document.getElementById('tsl').textContent=`Speed: ${s}x`;
+ if(tActive){stopT();startT();}
+}
+function seekT(v){
+ const ci=Math.floor((v/100)*tText.length);
+ const rem=tText.substring(ci);
+ window.speechSynthesis.cancel();
+ tActive=false;
+ const orig=tText;tText=rem;
+ if(v<100)startT();
+ tText=orig;
+}
+
+// ===== UI =====
+function openMenu(){document.getElementById('smenu').classList.add('open');document.getElementById('mo2').classList.add('act');document.body.style.overflow='hidden';}
+function closeMenu(){document.getElementById('smenu').classList.remove('open');document.getElementById('mo2').classList.remove('act');document.body.style.overflow='';}
+function togSearch(){const b=document.getElementById('sb');b.classList.toggle('act');if(b.classList.contains('act'))document.getElementById('si').focus();}
+function openSub(){document.getElementById('smo').classList.add('act');document.body.style.overflow='hidden';}
+function closeSub(){document.getElementById('smo').classList.remove('act');document.body.style.overflow='';}
+function subStory(){
+ const t=document.getElementById('sti').value.trim();
+ const c=document.getElementById('sco').value.trim();
+ if(!t||!c){alert('कृपया शीर्षक और कहानी दोनों भरें।');return;}
+ alert('आपकी कहानी सफलतापूर्वक भेज दी गई! धन्यवाद! 🙏');
+ ['an','sti','sco'].forEach(i=>document.getElementById(i).value='');
+ document.getElementById('sca').value='';
+ closeSub();
+}
+function openPol(){document.getElementById('pmo').classList.add('act');}
+function closePol(){document.getElementById('pmo').classList.remove('act');}
+
+render();
+</script>
+</body>
+</html>
